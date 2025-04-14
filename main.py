@@ -44,19 +44,21 @@ print(csv_file)
 df = pd.read_csv(csv_file)
 print(df.head())
 client = genai.Client(api_key=os.environ['GOOGLE_API_KEY'])
-contents = ('Hi, can you create a hyper realistic image of a 7 months old baby boy ' 
-            'with big smile on face ' 
-            'with toys surounded?')
+contents = (
+    "create a image of Indian farm with a levish wheat crop and mango trees, "
+    "the farmer is wearing a white kurta and dhoti."
+    )
 
 response = client.models.generate_content(
     # model="gemma-3-27b-it", 
-    model = "gemini-2.0-flash-exp-image-generation", 
+    model = "gemini-2.0-flash-exp", 
     contents= contents, 
     config=types.GenerateContentConfig(
         response_modalities=['Text', 'Image']
     )
 )
 
+print("Response: ", response)
 
 for part in response.candidates[0].content.parts:
     if part.text is not None: 
