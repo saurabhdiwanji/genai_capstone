@@ -45,8 +45,8 @@ df = pd.read_csv(csv_file)
 print(df.head())
 client = genai.Client(api_key=os.environ['GOOGLE_API_KEY'])
 contents = (
-    "create a image of Indian farm with a levish wheat crop and mango trees, "
-    "the farmer is wearing a white kurta and dhoti."
+    "creat a 3d image of hyper realistic baby cat playing, "
+    "in the levish farm house with her friends."
     )
 
 response = client.models.generate_content(
